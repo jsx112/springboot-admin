@@ -1,0 +1,36 @@
+#server:
+#  servlet:
+#    context-path: /admin
+
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: sba3
+
+eureka:
+#  instance:
+#    hostname: localhost
+#    leaseRenewalIntervalInSeconds: 2
+  client:
+    service-url:
+#      defaultZone: http://localhost:8881/eureka/
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/,http://localhost:8883/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  port: 19901
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+
+#日志配置
+logging:
+  config: classpath:log4j2.xml

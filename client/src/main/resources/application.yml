@@ -1,0 +1,25 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: admin-client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/,http://localhost:8883/eureka/
+
+
+spring.boot.admin.url: http://localhost:8000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#日志配置
+logging:
+  config: classpath:log4j2.xml

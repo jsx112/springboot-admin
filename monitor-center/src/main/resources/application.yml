@@ -1,0 +1,40 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: admin-server
+  mail:
+    host: smtp.163.com
+    username: ******@163.com
+    password: ******
+  boot:
+    admin:
+      notify:
+        mail:
+          from: ******@163.com
+          to: ******@163.com
+          template: "classpath:/META-INF/spring-boot-admin-server/mail/status-changed.html"
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8881}/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+#日志配置
+logging:
+  config: classpath:log4j2.xml
